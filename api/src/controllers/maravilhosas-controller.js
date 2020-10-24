@@ -32,22 +32,13 @@ const getMaravilhosaById = (req, res) => {
 // POST criar um novo objeto maravilhosa
 const addMaravilhosa = (req, res) => {
 
+    const { error } = models.insertData(req.body)
+    if (error === null) {
+        res.status(201).json("Registro adicionado com sucesso!");
+    } else {
+        res.status(400).json({ "message": error.message })
+    }
     
-
-
-
-    // const { id, name, photo, subtitle, about, pharse, history, addedby } = req.body
-    // const push = models.insertData
-    
-
-    // if (push) {
-    //     push(id, name, photo, subtitle, about, pharse, history, addedby)
-    //     res.status(200).send('Criado com sucesso!')
-    // } else if (!push){
-    //     res.status(400).send('Essa maravilhosa já existe na lista!')
-    // } else {
-    //     res.status(400).send('Confira o body!')
-    // }
 
 }
 
